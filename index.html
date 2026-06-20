@@ -1,57 +1,132 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه آنلاین</title>
+    <title>فروشگاه دیجیتال</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-    <h1>فروشگاه آنلاین</h1>
+<nav>
+    <div class="logo">Digital Shop</div>
 
-    <div class="cart">
-        🛒 سبد خرید:
-        <span id="cart-count">0</span>
+    <ul>
+        <li><a href="#">خانه</a></li>
+        <li><a href="#products">محصولات</a></li>
+        <li><a href="#about">درباره ما</a></li>
+        <li><a href="#contact">تماس با ما</a></li>
+    </ul>
+
+    <div class="actions">
+        <button id="themeBtn">🌙</button>
+
+        <div class="cart">
+            🛒 <span id="cartCount">0</span>
+        </div>
     </div>
-</header>
+</nav>
 
-<section class="search-box">
-    <input type="text" id="searchInput" placeholder="جستجوی محصول...">
+<section class="hero">
+    <h1>به فروشگاه دیجیتال خوش آمدید</h1>
+
+    <p>
+        بهترین محصولات دیجیتال با بهترین قیمت
+    </p>
+
+    <a href="#products">
+        <button>مشاهده محصولات</button>
+    </a>
+</section>
+
+<section class="search">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="جستجوی محصول..."
+    >
 </section>
 
 <section class="products" id="products">
 
     <div class="product">
-        <img src="https://via.placeholder.com/200" alt="">
+        <img src="https://picsum.photos/300?1">
         <h3>لپ تاپ</h3>
-        <p>25,000,000 تومان</p>
+        <p>25 میلیون تومان</p>
         <button onclick="addToCart()">افزودن به سبد</button>
     </div>
 
     <div class="product">
-        <img src="https://via.placeholder.com/200" alt="">
+        <img src="https://picsum.photos/300?2">
         <h3>موبایل</h3>
-        <p>15,000,000 تومان</p>
+        <p>15 میلیون تومان</p>
         <button onclick="addToCart()">افزودن به سبد</button>
     </div>
 
     <div class="product">
-        <img src="https://via.placeholder.com/200" alt="">
-        <h3>هدفون</h3>
-        <p>2,000,000 تومان</p>
-        <button onclick="addToCart()">افزودن به سبد</button>
-    </div>
-
-    <div class="product">
-        <img src="https://via.placeholder.com/200" alt="">
+        <img src="https://picsum.photos/300?3">
         <h3>ساعت هوشمند</h3>
-        <p>4,500,000 تومان</p>
+        <p>5 میلیون تومان</p>
+        <button onclick="addToCart()">افزودن به سبد</button>
+    </div>
+
+    <div class="product">
+        <img src="https://picsum.photos/300?4">
+        <h3>هدفون</h3>
+        <p>2 میلیون تومان</p>
         <button onclick="addToCart()">افزودن به سبد</button>
     </div>
 
 </section>
+
+<section id="about" class="about">
+    <h2>درباره ما</h2>
+
+    <p>
+        این پروژه به عنوان پروژه درس طراحی وب
+        با HTML CSS JavaScript ساخته شده است.
+    </p>
+</section>
+
+<section id="contact" class="contact">
+
+    <h2>تماس با ما</h2>
+
+    <form id="contactForm">
+
+        <input
+            type="text"
+            placeholder="نام"
+            required
+        >
+
+        <input
+            type="email"
+            placeholder="ایمیل"
+            required
+        >
+
+        <textarea
+            placeholder="پیام شما"
+            required
+        ></textarea>
+
+        <button type="submit">
+            ارسال
+        </button>
+
+    </form>
+
+</section>
+
+<footer>
+    <p>
+        © 2026 Digital Shop
+    </p>
+</footer>
 
 <script src="script.js"></script>
 

@@ -1,29 +1,60 @@
-let cartCount = 0;
+let cart =
+localStorage.getItem("cart") || 0;
 
-function addToCart() {
-    cartCount++;
-    document.getElementById("cart-count").innerText = cartCount;
+document.getElementById("cartCount")
+.innerText = cart;
+
+function addToCart(){
+
+cart++;
+
+localStorage.setItem("cart",cart);
+
+document.getElementById("cartCount")
+.innerText = cart;
+
 }
 
-const searchInput = document.getElementById("searchInput");
+document
+.getElementById("themeBtn")
+.addEventListener("click",()=>{
 
-searchInput.addEventListener("keyup", function() {
+document.body.classList.toggle("dark");
 
-    let filter = searchInput.value.toLowerCase();
+});
 
-    let products = document.querySelectorAll(".product");
+document
+.getElementById("searchInput")
+.addEventListener("keyup",function(){
 
-    products.forEach(product => {
+let value =
+this.value.toLowerCase();
 
-        let title = product.querySelector("h3")
-        .innerText.toLowerCase();
+let products =
+document.querySelectorAll(".product");
 
-        if(title.includes(filter)){
-            product.style.display = "block";
-        } else {
-            product.style.display = "none";
-        }
+products.forEach(product=>{
 
-    });
+let title =
+product.querySelector("h3")
+.innerText
+.toLowerCase();
+
+if(title.includes(value))
+product.style.display="block";
+else
+product.style.display="none";
+
+});
+
+});
+
+document
+.getElementById("contactForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+alert("پیام با موفقیت ارسال شد");
 
 });
