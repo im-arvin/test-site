@@ -1,134 +1,144 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه دیجیتال</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Shop</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<nav>
-    <div class="logo">Digital Shop</div>
+  <!-- ===== لودینگ ===== -->
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- ===== ناوبار ===== -->
+  <nav>
+    <div class="logo">⚡ Digi Shop</div>
 
     <ul>
-        <li><a href="#">خانه</a></li>
-        <li><a href="#products">محصولات</a></li>
-        <li><a href="#about">درباره ما</a></li>
-        <li><a href="#contact">تماس با ما</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact Us</a></li>
     </ul>
 
-    <div class="actions">
-        <button id="themeBtn">🌙</button>
+    <div class="nav-btns">
+      <button><a href="login.html">Login</a></button>
+      <button id="themeBtn">🌙</button>
+      <button id="cartBtn">🛒 Cart <span id="cartCount">0</span></button>
+    </div>
+  </nav>
 
-        <div class="cart">
-            🛒 <span id="cartCount">0</span>
+  <!-- ===== هیرو ===== -->
+  <section class="hero">
+    <h1>Best Digital Products</h1>
+    <p>Reasonable price, Good quality</p>
+    <a href="#products"><button class="hero-btn">See Products ↓</button></a>
+  </section>
+
+  <!-- ===== جستجو ===== -->
+  <section class="search-section">
+    <input type="text" id="searchInput" placeholder="🔍 Search ...">
+  </section>
+
+  <!-- ===== محصولات ===== -->
+  <section id="products" class="products-section">
+    <h2 class="section-title">Our Products</h2>
+
+    <div class="products-grid">
+
+      <div class="card hidden">
+        <img src="images/apple-brand-macbook-photo-20.png" alt="Macbook">
+        <div class="card-body">
+          <h3>Macbook</h3>
+          <p class="desc">Powerful processor, suitable for work and study</p>
+          <div class="card-footer">
+            <span class="price">1500 $</span>
+            <button onclick="addToCart('Macbook', 1500)">Add +</button>
+          </div>
         </div>
+      </div>
+
+      <div class="card hidden">
+        <img src="images/iphone-17-pro-max-cam-thumb-650x650.png" alt="Iphone 17 pro max">
+        <div class="card-body">
+          <h3>Iphone 17 pro max</h3>
+          <p class="desc">Professional camera, high-capacity battery</p>
+          <div class="card-footer">
+            <span class="price">1100 $</span>
+            <button onclick="addToCart('Iphone', 1100)">Add +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card hidden">
+        <img src="images/apple_watch_PNG32.png" alt="Watch">
+        <div class="card-body">
+          <h3>Apple watch</h3>
+          <p class="desc">Health monitor, GPS, waterproof</p>
+          <div class="card-footer">
+            <span class="price">500 $</span>
+            <button onclick="addToCart('Watch', 500)">Add +</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card hidden">
+        <img src="images/filters_format(png)_upscale().png" alt="Headset">
+        <div class="card-body">
+          <h3>Apple Headset</h3>
+          <p class="desc">Amazing sound, noise cancelling</p>
+          <div class="card-footer">
+            <span class="price">600 $</span>
+            <button onclick="addToCart('Headset', 600)">Add +</button>
+          </div>
+        </div>
+      </div>
+
     </div>
-</nav>
+  </section>
 
-<section class="hero">
-    <h1>به فروشگاه دیجیتال خوش آمدید</h1>
-
-    <p>
-        بهترین محصولات دیجیتال با بهترین قیمت
-    </p>
-
-    <a href="#products">
-        <button>مشاهده محصولات</button>
-    </a>
-</section>
-
-<section class="search">
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="جستجوی محصول..."
-    >
-</section>
-
-<section class="products" id="products">
-
-    <div class="product">
-        <img src="https://picsum.photos/300?1">
-        <h3>لپ تاپ</h3>
-        <p>25 میلیون تومان</p>
-        <button onclick="addToCart()">افزودن به سبد</button>
+  <!-- ===== درباره ما ===== -->
+  <section id="about" class="about-section hidden">
+    <h2>About Us</h2>
+    <p>ما از سال ۱۴۰۰ بهترین محصولات دیجیتال رو با قیمت مناسب ارائه می‌دیم.</p>
+    <div class="about-boxes">
+      <div class="box">📦 Fast shipping</div>
+      <div class="box">✅ Guarantee of authenticity</div>
+      <div class="box">🔄 7 days return</div>
     </div>
+  </section>
 
-    <div class="product">
-        <img src="https://picsum.photos/300?2">
-        <h3>موبایل</h3>
-        <p>15 میلیون تومان</p>
-        <button onclick="addToCart()">افزودن به سبد</button>
-    </div>
-
-    <div class="product">
-        <img src="https://picsum.photos/300?3">
-        <h3>ساعت هوشمند</h3>
-        <p>5 میلیون تومان</p>
-        <button onclick="addToCart()">افزودن به سبد</button>
-    </div>
-
-    <div class="product">
-        <img src="https://picsum.photos/300?4">
-        <h3>هدفون</h3>
-        <p>2 میلیون تومان</p>
-        <button onclick="addToCart()">افزودن به سبد</button>
-    </div>
-
-</section>
-
-<section id="about" class="about">
-    <h2>درباره ما</h2>
-
-    <p>
-        این پروژه به عنوان پروژه درس طراحی وب
-        با HTML CSS JavaScript ساخته شده است.
-    </p>
-</section>
-
-<section id="contact" class="contact">
-
-    <h2>تماس با ما</h2>
-
+  <!-- ===== تماس ===== -->
+  <section id="contact" class="contact-section hidden">
+    <h2>Contact Us</h2>
     <form id="contactForm">
-
-        <input
-            type="text"
-            placeholder="نام"
-            required
-        >
-
-        <input
-            type="email"
-            placeholder="ایمیل"
-            required
-        >
-
-        <textarea
-            placeholder="پیام شما"
-            required
-        ></textarea>
-
-        <button type="submit">
-            ارسال
-        </button>
-
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="4" placeholder="Your Message ..."></textarea>
+      <button type="submit">Send Message ✉</button>
     </form>
+  </section>
 
-</section>
+  <!-- ===== فوتر ===== -->
+  <footer>
+    <p>© 2026  All rights reserved  —  Digi Shop</p>
+  </footer>
 
-<footer>
-    <p>
-        © 2026 Digital Shop
-    </p>
-</footer>
+  <!-- ===== مودال سبد خرید ===== -->
+  <div id="cartModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2>🛒 Cart</h2>
+        <button id="closeCart">✕</button>
+      </div>
+      <ul id="cartItems"></ul>
+      <p class="total">Total sum:<strong><span id="totalPrice">0</span> $</strong></p>
+      <button class="checkout-btn">Complete the purchase</button>
+    </div>
+  </div>
 
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>

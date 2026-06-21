@@ -1,148 +1,531 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:tahoma;
-scroll-behavior:smooth;
+/* ==============================
+   تنظیمات پایه
+============================== */
+@font-face{
+    font-family: 'Fredoka';
+    src: url(Fredoka.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fredoka', Arial, sans-serif;
 }
 
-body{
-background:#f4f4f4;
-transition:.4s;
+body {
+  background: #f4f4f8;
+  color: #222;
+  transition: background 0.3s, color 0.3s;
 }
 
-.dark{
-background:#222;
-color:white;
+a { text-decoration: none; }
+
+button {
+  cursor: pointer;
+  font-family: tahoma;
 }
 
-nav{
-background:#111;
-color:white;
-padding:15px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:sticky;
-top:0;
+/* ==============================
+   لودینگ
+============================== */
+#loader {
+  position: fixed;
+  inset: 0;                    /* = top:0 right:0 bottom:0 left:0 */
+  background: #1e1b4b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s;
 }
 
-ul{
-display:flex;
-list-style:none;
-gap:20px;
+#loader.hide {
+  opacity: 0;
+  pointer-events: none;
 }
 
-a{
-color:white;
-text-decoration:none;
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255,255,255,0.2);
+  border-top-color: #a78bfa;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
 }
 
-.hero{
-height:90vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-.hero h1{
-font-size:50px;
-margin-bottom:20px;
+/* ==============================
+   ناوبار
+============================== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #1e1b4b;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 30px;
 }
 
-.hero button{
-padding:12px 25px;
-cursor:pointer;
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #a78bfa;
 }
 
-.search{
-text-align:center;
-margin:30px;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
 }
 
-.search input{
-padding:10px;
-width:300px;
+nav ul a {
+  color: rgba(255,255,255,0.8);
+  font-size: 15px;
+  transition: color 0.2s;
 }
 
-.products{
-display:grid;
-grid-template-columns:
-repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-padding:30px;
+nav ul a:hover { color: #a78bfa; }
+
+.nav-btns {
+  display: flex;
+  gap: 10px;
 }
 
-.product{
-background:white;
-padding:15px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,.1);
-transition:.3s;
+.nav-btns button {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: background 0.2s;
 }
 
-.product:hover{
-transform:translateY(-10px);
+.nav-btns button:hover {
+  background: rgba(255,255,255,0.2);
 }
 
-.product img{
-width:100%;
-border-radius:10px;
+/* ==============================
+   هیرو
+============================== */
+.hero {
+  text-align: center;
+  padding: 200px 20px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
 }
 
-.product h3{
-margin:10px 0;
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 14px;
 }
 
-.product button{
-width:100%;
-padding:10px;
-margin-top:10px;
-cursor:pointer;
+.hero p {
+  font-size: 18px;
+  margin-bottom: 28px;
+  opacity: 0.85;
 }
 
-.about,
-.contact{
-padding:50px;
-text-align:center;
+.hero-btn {
+  background: white;
+  color: #7c3aed;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: transform 0.2s;
 }
 
-form{
-display:flex;
-flex-direction:column;
-gap:15px;
-max-width:400px;
-margin:auto;
+.hero-btn:hover { transform: translateY(-3px); }
+
+/* ==============================
+   جستجو
+============================== */
+.search-section {
+  text-align: center;
+  padding: 28px 20px;
 }
 
-input,
-textarea{
-padding:10px;
+#searchInput {
+  width: 100%;
+  max-width: 440px;
+  padding: 13px 20px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: tahoma;
+  outline: none;
+  transition: border 0.2s;
 }
 
-footer{
-background:#111;
-color:white;
-padding:20px;
-text-align:center;
+#searchInput:focus { border-color: #7c3aed; }
+
+/* ==============================
+   محصولات
+============================== */
+.products-section {
+  padding: 10px 30px 60px;
 }
 
-@media(max-width:768px){
-
-nav{
-flex-direction:column;
-gap:10px;
+.section-title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 30px;
+  color: #4f46e5;
 }
 
-ul{
-flex-wrap:wrap;
-justify-content:center;
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 20px auto;
 }
 
-.hero h1{
-font-size:35px;
+/* کارت محصول */
+.card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  transition: transform 1s;
 }
 
+.card:hover { transform: translateY(-15px); }
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
+
+.card-body {
+  padding: 16px;
+}
+
+.card-body h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.desc {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 14px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: bold;
+  color: #7c3aed;
+  font-size: 14px;
+}
+
+.card-footer button {
+  background: #7c3aed;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+
+.card-footer button:hover { background: #6d28d9; padding: 12px 18px; }
+
+/* ==============================
+   درباره ما
+============================== */
+.about-section {
+  text-align: center;
+  padding: 60px 30px;
+  background: #ede9fe;
+}
+
+.about-section h2 {
+  font-size: 28px;
+  color: #4f46e5;
+  margin-bottom: 12px;
+}
+
+.about-section p {
+  color: #555;
+  margin-bottom: 28px;
+  font-size: 15px;
+}
+
+.about-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.box {
+  background: white;
+  padding: 16px 28px;
+  border-radius: 12px;
+  font-size: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+/* ==============================
+   تماس
+============================== */
+.contact-section {
+  text-align: center;
+  padding: 60px 30px;
+}
+
+.contact-section h2 {
+  font-size: 28px;
+  color: #4f46e5;
+  margin-bottom: 24px;
+}
+
+.contact-section input,
+.contact-section textarea {
+  display: block;
+  margin: 10px auto;
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: tahoma;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.contact-section input:focus,
+.contact-section textarea:focus { border-color: #7c3aed; }
+
+.contact-section button {
+  background: #7c3aed;
+  color: white;
+  border: none;
+  padding: 13px 32px;
+  border-radius: 10px;
+  font-size: 15px;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.contact-section button:hover { background: #6d28d9; }
+
+/* ==============================
+   فوتر
+============================== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #1e1b4b;
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+}
+
+/* ==============================
+   مودال سبد خرید
+============================== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal.open { display: flex; }
+
+.modal-box {
+  background: white;
+  width: 360px;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h2 { font-size: 18px; color: #4f46e5; }
+
+.modal-header button {
+  background: #f3f4f6;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#cartItems {
+  list-style: none;
+  margin-bottom: 16px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+#cartItems li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.total {
+  text-align: left;
+  font-size: 15px;
+  margin-bottom: 14px;
+  color: #555;
+}
+
+.checkout-btn {
+  width: 100%;
+  background: #7c3aed;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.checkout-btn:hover { background: #6d28d9; }
+
+/* ==============================
+   دارک مود
+============================== */
+body.dark { background: #111827; color: #f0f0f0; }
+body.dark .card { background: #1f2937; }
+body.dark .card-body h3 { color: #f0f0f0; }
+body.dark #searchInput { background: #1f2937; color: #f0f0f0; border-color: #374151; }
+body.dark .modal-box { background: #1f2937; color: #f0f0f0; }
+body.dark .about-section { background: #1a1f2e; }
+body.dark .box { background: #1f2937; color: #f0f0f0; }
+
+/* ==============================
+   انیمیشن اسکرول
+============================== */
+.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-btns button a{
+    color: white;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+ 
+.login-box {
+  background: white;
+  width: 360px;
+  border-radius: 20px;
+  padding: 36px 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  text-align: center;
+}
+ 
+.login-box h2 {
+  font-size: 24px;
+  color: #4f46e5;
+  margin-bottom: 6px;
+}
+ 
+.login-box p {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 24px;
+}
+ 
+.login-box input {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: tahoma;
+  outline: none;
+  transition: border 0.2s;
+}
+ 
+.login-box input:focus {
+  border-color: #7c3aed;
+}
+ 
+.login-box button {
+  width: 100%;
+  padding: 13px;
+  background: #7c3aed;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: tahoma;
+  cursor: pointer;
+  margin-top: 6px;
+}
+ 
+.login-footer {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #888;
+}
+ 
+.login-footer a {
+  color: #7c3aed;
+  text-decoration: none;
+  font-weight: bold;
+}
+ 
+/* دارک مود لاگین */
+body.dark .login-box {
+  background: #1f2937;
+  color: #f0f0f0;
+}
+ 
+body.dark .login-box h2 { color: #a78bfa; }
+body.dark .login-box p  { color: #9ca3af; }
+ 
+body.dark .login-box input {
+  background: #111827;
+  color: #f0f0f0;
+  border-color: #374151;
+}
+
+.box:hover{ transform: translateY(-10px); color: blue; background-color: #cec5ff; transition: 0.5s;}
